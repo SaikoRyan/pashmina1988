@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pashmina 1988 | 帕什米納披肩展</title>
+  <meta name="description" content="探索喀什米爾帕什米納的永恆之美：一場關於材質、工藝與傳承的當代展覽">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+    
+    :root {
+      --cream: #FAF8F3;
+      --sand: #E8E2D5;
+      --taupe: #8B7F77;
+      --charcoal: #2C2826;
+      --accent: #C4A572;
+      --white: #FFFFFF;
+      --max-width: 1200px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    
+    /* Language switching - hide all by default, show only active language */
+    .zh, .en { display: none; }
+    .lang-zh .zh { display: block !important; }
+    .lang-en .en { display: block !important; }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(250, 248, 243, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--sand);
+    }
+    
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-decoration: none;
+      color: var(--charcoal);
+      font-style: italic;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--taupe);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--charcoal);
+    }
+    
+    .lang-switch {
+      display: flex;
+      gap: 0.5rem;
+      margin-left: 2rem;
+      padding-left: 2rem;
+      border-left: 1px solid var(--sand);
+    }
+    
+    .lang-btn {
+      padding: 0.3rem 0.8rem;
+      background: transparent;
+      border: 1px solid var(--sand);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.85rem;
+    }
+    
+    .lang-btn.active {
+      background: var(--charcoal);
+      color: var(--white);
+      border-color: var(--charcoal);
+    }
+    
+    /* Hero Section */
+    .hero {
+      margin-top: 80px;
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      background-image: url('figs/fig_8.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg, 
+        rgba(250, 248, 243, 0.85) 0%, 
+        rgba(232, 226, 213, 0.75) 50%, 
+        rgba(139, 127, 119, 0.2) 100%
+      );
+      z-index: 1;
+    }
+    
+    .hero-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+    
+    .hero-text .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--taupe);
+      margin-bottom: 2rem;
+      font-style: italic;
+      font-weight: 300;
+    }
+    
+    .exhibition-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 8px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .info-item {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .info-label {
+      font-weight: 500;
+      color: var(--taupe);
+      min-width: 80px;
+    }
+    
+    .hero-image {
+      position: relative;
+      height: 600px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      background-image: url('figs/fig_7.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(44, 40, 38, 0.2);
+      z-index: 1;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+    
+    /* Statement Section */
+    .statement {
+      padding: 6rem 2rem;
+      background: var(--white);
+    }
+    
+    .statement-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .statement h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .statement h2::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: var(--accent);
+    }
+    
+    .statement-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--charcoal);
+    }
+    
+    .statement-text p {
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    
+    .statement-text p:first-child::first-letter {
+      font-size: 4rem;
+      float: left;
+      line-height: 1;
+      margin-right: 0.4rem;
+      font-weight: 300;
+      color: var(--accent);
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Gallery Views */
+    .artworks {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+    
+    .artworks-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    
+    .artworks h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .artwork-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .artwork-item {
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .artwork-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+    
+    .artwork-image {
+      position: relative;
+      padding-bottom: 133%;
+      background: linear-gradient(180deg, var(--sand), var(--cream));
+      overflow: hidden;
+    }
+    
+    .artwork-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Visit Section */
+    .visit {
+      padding: 6rem 2rem;
+      background: var(--charcoal);
+      color: var(--white);
+    }
+    
+    .visit-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    
+    .visit h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      color: var(--white);
+    }
+    
+    .visit-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .visit-item {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .visit-label {
+      font-weight: 500;
+      color: var(--accent);
+      min-width: 100px;
+    }
+    
+    .visit a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    .visit a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 2rem;
+      background: var(--charcoal);
+      color: var(--taupe);
+      text-align: center;
+      border-top: 1px solid #3a3633;
+      font-size: 0.9rem;
+    }
+    
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90vh;
+      position: relative;
+    }
+    
+    .lightbox img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 8px;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: background 0.3s;
+    }
+    
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .hero-image {
+        height: 400px;
+      }
+      
+      .visit-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .artwork-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+<body class="lang-en">
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">PASHMINA 1988</a>
+      <div class="nav-links">
+        <a href="#statement"><span class="zh">策展前言</span><span class="en">Statement</span></a>
+        <a href="#artworks"><span class="zh">展覽視角</span><span class="en">Exhibition Views</span></a>
+        <a href="#visit"><span class="zh">參觀</span><span class="en">Visit</span></a>
+        <div class="lang-switch">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('zh')">中</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="zh">帕什米納披肩展</h1>
+        <h1 class="en">Pashmina 1988</h1>
+        <p class="subtitle serif zh">喜馬拉雅的細語，時光的織錦</p>
+        <p class="subtitle serif en">Whispers from the Himalayas, Tapestry of Time</p>
+        
+        <div class="exhibition-info">
+          <div class="info-item">
+            <span class="info-label zh">展期</span>
+            <span class="info-label en">Duration</span>
+            <span>2025.10.01 -- 2025.12.31</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label zh">地點</span>
+            <span class="info-label en">Venue</span>
+            <span class="zh">香港中環荷里活道149號</span>
+            <span class="en">149 Hollywood Road, Central, Hong Kong</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label zh">時間</span>
+            <span class="info-label en">Hours</span>
+            <span class="zh">週二至週六 11:00-19:00</span>
+            <span class="en">Tue-Sat 11:00-19:00</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <img src="figs/fig_7.jpg" alt="Pashmina exhibition main visual">
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement Section -->
+  <section id="statement" class="statement">
+    <div class="statement-inner">
+      <h2 class="zh">策展前言</h2>
+      <h2 class="en">Curatorial Statement</h2>
+      
+      <div class="statement-text serif zh">
+        <p>我對喀什米爾與帕什米納織物獨特之美、品質與工藝的探尋，始於1988年我第一次造訪喀什米爾。</p>
+        <p>此後，我多次重返這片遙遠而壯美的土地，去了解喀什米爾工藝的材料、流程、技藝與審美。更為珍貴的是，這些旅程讓我與當地的人們建立起深厚的情感聯結，收穫了長久的友誼。</p>
+        <p>因此，我非常高興策劃此次帕什米納披肩展。所有展品皆取材自喜馬拉雅帕什米納山羊的細軟羊毛。每一件都出自我們親自認識的作坊與匠人。最複雜的紋樣從數月到兩年多的時間方能完成；無論是「素面」還是刺繡，每件作品都承載著喀什米爾工藝獨有的設計語言。</p>
+        <p>只要悉心保養，純正的帕什米納才有的奢柔、溫暖與輕盈，將伴隨一生甚至更久。簡言之，每一件本身都是一件藝術品，延續數百年手工傳統的精華，值得代代相傳。</p>
+        <p>希望你和我一樣喜愛這次展覽。這些披肩既是節日季的完美禮物，也是不負自我的犒賞！</p>
+      </div>
+      
+      <div class="statement-text serif en">
+        <p>My journey to discover the unique beauty, quality and craftsmanship of Kashmir and Pashmina textiles began with my first visit to Kashmir in 1988.</p>
+        <p>Since then, I have returned many times to explore this remote and beautiful part of the world and to learn about the materials, processes, skills, and aesthetics of Kashmiri craftsmanship. Perhaps even more important and rewarding, my trips to Kashmir have given me a sense of connection with the people of Kashmir which has resulted in enduring friendships.</p>
+        <p>It is therefore with great pleasure that I have curated the current exhibition of Pashmina shawls. All are made from the fine wool of the Himalayan Pashmina goat.</p>
+        <p>Each is from a workshop and artisan we know personally. Each has been created over a period of multiple months to more than two years for the most intricate designs. Each bears the unique design characteristics of Kashmiri craftsmanship.</p>
+        <p>All have the luxurious softness, warmth, and lightness of touch that only pure Pashmina can provide and can last more than a lifetime if cared for properly. In short, each item is a work of art in itself, carrying the heritage of hundreds of years of craftsmanship, and fit to be passed on to future generations.</p>
+        <p>I hope you enjoy our exhibition as much as I have enjoyed assembling the collection. The shawls represent perfect gifts for the holiday season, and also make a well deserved reward for one's self!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exhibition Views Section -->
+  <section id="artworks" class="artworks">
+    <div class="artworks-inner">
+      <h2 class="zh">展覽視角</h2>
+      <h2 class="en">Exhibition Views</h2>
+      
+      <div class="artwork-grid">
+        <!-- Gallery View 1 -->
+        <div class="artwork-item" onclick="openLightbox(this)">
+          <div class="artwork-image">
+            <img src="figs/fig_1.jpg" alt="Exhibition view 1">
+          </div>
+        </div>
+        
+        <!-- Gallery View 2 -->
+        <div class="artwork-item" onclick="openLightbox(this)">
+          <div class="artwork-image">
+            <img src="figs/fig_2.jpg" alt="Exhibition view 2">
+          </div>
+        </div>
+        
+        <!-- Gallery View 3 -->
+        <div class="artwork-item" onclick="openLightbox(this)">
+          <div class="artwork-image">
+            <img src="figs/fig_3.jpg" alt="Exhibition view 3">
+          </div>
+        </div>
+        
+        <!-- Gallery View 4 -->
+        <div class="artwork-item" onclick="openLightbox(this)">
+          <div class="artwork-image">
+            <img src="figs/fig_4.jpg" alt="Exhibition view 4">
+          </div>
+        </div>
+        
+        <!-- Gallery View 5 -->
+        <div class="artwork-item" onclick="openLightbox(this)">
+          <div class="artwork-image">
+            <img src="figs/fig_5.jpg" alt="Exhibition view 5">
+          </div>
+        </div>
+        
+        <!-- Gallery View 6 -->
+        <div class="artwork-item" onclick="openLightbox(this)">
+          <div class="artwork-image">
+            <img src="figs/fig_6.jpg" alt="Exhibition view 6">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit Section -->
+  <section id="visit" class="visit">
+    <div class="visit-inner">
+      <div>
+        <h2 class="zh">參觀資訊</h2>
+        <h2 class="en">Visit Information</h2>
+        <div class="visit-info">
+          <div class="visit-item">
+            <span class="visit-label zh">地址</span>
+            <span class="visit-label en">Address</span>
+            <span class="zh">香港中環荷里活道149號</span>
+            <span class="en">149 Hollywood Road, Central, Hong Kong</span>
+          </div>
+          <div class="visit-item">
+            <span class="visit-label zh">開放時間</span>
+            <span class="visit-label en">Hours</span>
+            <span class="zh">週二至週六 11:00-19:00</span>
+            <span class="en">Tuesday-Saturday 11:00-19:00</span>
+          </div>
+          <div class="visit-item">
+            <span class="visit-label zh">入場</span>
+            <span class="visit-label en">Admission</span>
+            <span class="zh">免費</span>
+            <span class="en">Free</span>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h2 class="zh">聯絡方式</h2>
+        <h2 class="en">Contact</h2>
+        <div class="visit-info">
+          <div class="visit-item">
+            <span class="visit-label zh">郵箱</span>
+            <span class="visit-label en">Email</span>
+            <a href="mailto:info@example.com">info@example.com</a>
+          </div>
+          <div class="visit-item">
+            <span class="visit-label zh">電話</span>
+            <span class="visit-label en">Phone</span>
+            <a href="tel:+85212345678">+852 1234 5678</a>
+          </div>
+          <div class="visit-item">
+            <span class="visit-label zh">網站</span>
+            <span class="visit-label en">Website</span>
+            <a href="https://www.gallery149.com" target="_blank">www.gallery149.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="zh">© 2025 帕什米納披肩展. 保留所有權利</div>
+    <div class="en">© 2025 Pashmina 1988. All rights reserved</div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <div class="lightbox-content">
+      <img src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    // Language switching
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if ((lang === 'en' && btn.textContent === 'EN') || (lang === 'zh' && btn.textContent === '中')) {
+          btn.classList.add('active');
+        }
+      });
+      localStorage.setItem('lang', lang);
+    }
+    
+    // Initialize language
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLang(savedLang);
+    
+    // Lightbox
+    function openLightbox(item) {
+      const lightbox = document.getElementById('lightbox');
+      const img = item.querySelector('.artwork-image img');
+      
+      if (img) {
+        lightbox.querySelector('img').src = img.src;
+        lightbox.querySelector('img').alt = img.alt;
+      }
+      lightbox.classList.add('active');
+    }
+    
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    
+    // Close lightbox on background click
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+    
+    // Close lightbox on ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
